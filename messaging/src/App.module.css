@@ -1,0 +1,19 @@
+#mainContainer{
+  display: flex;
+}
+
+#sidebar, #messagingContainer{
+  display: flex;
+}
+
+
+/* Mobile — only the active panel shown */
+@media (max-width: 768px) {
+    .sidebar, .main {
+        display: none;
+        width: 100%;
+    }
+    .active {
+        display: flex;
+    }
+}
