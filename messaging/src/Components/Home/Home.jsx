@@ -1,5 +1,6 @@
-import sidebar from '../Sidebar/Sidebar'
+import Sidebar from '../Sidebar/Sidebar'
 import ChatMain from '../ChatMain/ChatMain'
+import styles from './Home.module.css'
 
 export default function Home(){
     return (

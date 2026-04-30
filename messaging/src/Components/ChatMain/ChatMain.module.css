@@ -1,0 +1,12 @@
+.messagesDisplay{
+    flex: 1 1 auto;
+    grid-area: messagesDisplay
+}
+
+
+.messageComposition{
+    flex: 0 1 auto;
+    height: 50px;
+    grid-area: messageComposition;
+    background-color: rgb(23 23 23);
+}

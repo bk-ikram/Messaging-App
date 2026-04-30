@@ -1,11 +1,31 @@
 #mainContainer{
   display: flex;
+  justify-content: stretch;
+  height: 100%;
 }
 
 #sidebar, #messagingContainer{
-  display: flex;
+  padding: 20px;
 }
 
+#sidebar{
+  flex: 1 1 auto;
+  background-color: #212121;
+}
+
+
+#messagingContainer{
+  flex: 4 1 auto;
+  background-color: #262626;
+  overflow-y: auto;
+  display: grid;
+  grid-template-areas: "messagesDisplay" "messageComposition";
+  grid-template-rows: 10fr 1fr;
+}
+
+/*chat main top color #262626*/
+/*incoming message #e6e7eb*/
+/*outgoing message #e6e7eb*/
 
 /* Mobile — only the active panel shown */
 @media (max-width: 768px) {
