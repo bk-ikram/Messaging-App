@@ -4,20 +4,17 @@
   height: 100%;
 }
 
-#sidebar, #messagingContainer{
-  padding: 20px;
-}
 
 #sidebar{
   flex: 1 1 auto;
   background-color: #212121;
+  padding: 20px;
 }
 
 
 #messagingContainer{
   flex: 4 1 auto;
   background-color: #262626;
-  overflow-y: auto;
   display: grid;
   grid-template-areas: "messagesDisplay" "messageComposition";
   grid-template-rows: 10fr 1fr;
