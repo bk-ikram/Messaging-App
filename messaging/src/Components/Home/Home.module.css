@@ -7,14 +7,14 @@
 
 #sidebar{
   flex: 1 1 auto;
-  background-color: #212121;
+  background-color: #262626;
   padding: 20px;
 }
 
 
 #messagingContainer{
   flex: 4 1 auto;
-  background-color: #262626;
+  background-color: #212121;
   display: grid;
   grid-template-areas: "messagesDisplay" "messageComposition";
   grid-template-rows: 10fr 1fr;
