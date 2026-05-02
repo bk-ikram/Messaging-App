@@ -10,7 +10,6 @@ var opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.JWT_SECRET;
 
-
 async function verify(jwt_payload, done) {
     try{
         const userId = jwt_payload.sub;

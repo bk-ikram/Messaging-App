@@ -1,8 +1,7 @@
 
 import { Router } from 'express';
 const appRouter = Router();
-import  { 
- } from "../controllers/appController.js";
+import  appController from "../controllers/appController.js";
 import passport from 'passport';
 import { authenticateLocal
         ,authenticateJWT
@@ -16,5 +15,11 @@ appRouter.use((req, res, next) => {
     next();
 })
 
+appRouter.post("/api/signin"
+                ,authenticateLocal
+                ,appController.signinPost);
+
+appRouter.post("/api/signup"
+                ,appController.signupPost);
 
 export default appRouter;

@@ -1,6 +1,6 @@
 import { postLogin } from '../../api/requests';
-import { useOutletContext } from 'react-router-dom';
-import { useEffect } from "react"; 
+import { useContext } from 'react';
+import { AuthContext } from '../App/App'
 
 
 
@@ -27,13 +27,13 @@ async function handleLogIn(e, setUser, setToken){
 }
 
 export default function SignIn(user){
-    //const { user, setUser, setToken } = useOutletContext();
+    const { setUser, setToken} = useContext(AuthContext);
     const isLoggedIn = Object.keys(user).length > 0;
 
     return (
         <>
 
-            <form onSubmit={(e) => handleLogIn(e,setUser, setToken, setError)}>
+            <form onSubmit={(e) => handleLogIn(e,setUser, setToken)}>
                 <p>
                     <label htmlFor="username">Username:  </label>
                     <input name="username" id="username" type="text" />

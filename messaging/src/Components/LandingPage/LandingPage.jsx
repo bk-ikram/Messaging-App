@@ -10,6 +10,8 @@ export default function LandingPage(){
     //      1= Sign in
     //      2= Sign up
     const [mode, setMode] = useState(0);
+
+   
     return (
         <div className={styles.landingPage}>
             <header>
@@ -27,7 +29,7 @@ export default function LandingPage(){
             </header>
             <div className={styles.content}>
                 { mode === 1
-                    ? <SignIn/> :
+                    ? <SignIn /> :
                     mode === 2
                     ? <SignUp/> :
                     <main>
@@ -42,3 +44,4 @@ export default function LandingPage(){
         </div>
     )
 }
+

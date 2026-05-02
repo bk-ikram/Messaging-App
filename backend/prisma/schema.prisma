@@ -14,8 +14,8 @@ datasource db {
 
 model User {
   id        Int       @id @default(autoincrement())
-  userName  String    
-  email     String
+  userName  String    @unique
+  email     String    @unique
   hash      String
   chats     Chat[]
   messages  Message[]

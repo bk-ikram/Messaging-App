@@ -1,5 +1,5 @@
 import passport from "passport";
-import { isAuthor } from "../repositories/queries.js";
+//import { isAuthor } from "../repositories/queries.js";
 
 export function authenticateLocal(req, res, next) {
   passport.authenticate("local", { session: false }, (err, user, info) => {
