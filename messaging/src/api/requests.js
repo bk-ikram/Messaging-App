@@ -1,7 +1,11 @@
 
 
-async function getPosts(apiFetch){
-    return apiFetch("/api/posts");
+async function getChats(apiFetch){
+    return apiFetch("/api/chats");
+}
+
+async function getChatDetails(apiFetch, chatId){
+    return apiFetch(`/api/chat/${chatId}`);
 }
 
 async function postLogin(formJson){
@@ -35,7 +39,7 @@ async function postSignUp(apiFetch, formJson){
 
 
 export {
-    getPosts,
+    getChats,
     postLogin,
     postSignUp
 };

@@ -22,4 +22,13 @@ appRouter.post("/api/signin"
 appRouter.post("/api/signup"
                 ,appController.signupPost);
 
+
+appRouter.get("/api/chats"
+                ,authenticateJWT
+                ,appController.getChats);
+
+appRouter.get("/api/chat/:chatId"
+                ,authenticateJWT
+                ,appController.getChatDetails);
+
 export default appRouter;
