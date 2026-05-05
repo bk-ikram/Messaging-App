@@ -14,7 +14,7 @@ export default function Home(){
     //revisit dependencies once websocket added
     useEffect(()=> {
         (async()=>{
-            const chats = getChats(apiFetch, user.id);
+            const chats = await getChats(apiFetch, user.id);
             setUserChats(chats);
         })();
     },[])
@@ -22,7 +22,7 @@ export default function Home(){
     return (
     <div id={styles.mainContainer}>
         <div id={styles.sidebar}>
-            <Sidebar userChats={userChats}/>
+            <Sidebar userChats={userChats} setSelectedChat={setSelectedChat}/>
         </div>
         <div id={styles.messagingContainer}>
             <ChatMain chat={selectedChat}/>

@@ -71,7 +71,8 @@ const signinPost = async( req, res, next) => {
 
 const getChats = async(req, res) => {
     const userId = req.user.id;
-    return getChatsRepo(userId);
+    const chats = await getChatsRepo(userId);
+    return res.json(chats);
 }
 
 
@@ -79,7 +80,8 @@ const getChatDetails = async(req, res) => {
     const chatId = req.params?.chatId;
     if(!chatId)
         return res.status(404).json({msg:"No Chat selected"});
-    return getChatDetailsRepo(chatId);
+    const chatDetails = await getChatDetailsRepo(chatId);
+    return res.json(chatDetails);
 }   
 
 

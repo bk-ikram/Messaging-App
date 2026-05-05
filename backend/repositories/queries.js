@@ -1,14 +1,18 @@
 import { prisma } from "../lib/prisma.js" ;
 
+const GLOBAL_CHAT_ID = 1;
+
 function insertUser(username, email,hashedPassword){
-    return/* prisma.user.create({
+    return prisma.user.create({
         data: {
             userName: username,
             email: email,
             hash: hashedPassword,
-            chats:
+            chats: {
+                connect: { id: GLOBAL_CHAT_ID }
+            }
         }
-    });*/
+    });
 }
 
 async function getUserByUsername(username){
@@ -26,19 +30,24 @@ async function getUserById(id){
 };
 
 async function getChatsRepo(id){
-    const chats = await prisma.user.findUnique({
+    const user = await prisma.user.findUnique({
         where: { id: id },
         select: {
             chats: {
                 select: {
                     id: true,
                     name: true,
-                    users: true
+                    users: {
+                        select: {
+                            userName: true
+                        }
+                    }
                 }
             }
         }
     })
-    return chats;
+    const groupChats = user.chats.filter(c=> (c.users.length > 2 || c.id === GLOBAL_CHAT_ID));
+    return groupChats;
 };
 
 async function getChatDetailsRepo(id){

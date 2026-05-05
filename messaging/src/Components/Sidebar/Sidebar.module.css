@@ -3,3 +3,13 @@
     flex-direction: column;
     align-items: start;
 }
+
+.actions{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+button.signout{
+    margin-top: auto;
+}

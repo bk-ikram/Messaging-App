@@ -1,11 +1,26 @@
 import styles from './ChatMain.module.css'
+import { postMessage } from '../../api/requests';
 import { Fragment } from "react";
 
-function handleForm(e){
+async function handleForm(e){
     e.preventDefault();
+    const formData = new FormData(form);
+    const formJson = Object.fromEntries(formData.entries());
+    try{
+        const response = await postMessage(formJson);
+        if(response?.id){
+            
+        }
+    }
+    catch(err){
+        console.error(err.message);
+    }
+    
+    return;
 }
 
 export default function ChatMain({userid,messages=[],firstUnreadMessageId,numUnread}){
+    //get chat details
     return(
             <>
             <div className={styles.messagesDisplay}>
