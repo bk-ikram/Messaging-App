@@ -14,8 +14,8 @@ async function handleLogIn(e, setUser, setToken){
         const { token, user } = ( response || {});
         if(token){
             setToken(token);
-            localStorage.setItem("odinBlogToken", token);
-            localStorage.setItem("odinBlogUser",JSON.stringify(user));
+            localStorage.setItem("messagingToken", token);
+            localStorage.setItem("messagingUser",JSON.stringify(user));
             setUser(user);
         }
     }

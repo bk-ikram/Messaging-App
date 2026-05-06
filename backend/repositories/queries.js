@@ -63,7 +63,7 @@ async function getChatDetailsRepo(id){
                     read: true,
                     author: {
                         select: {
-                            username: true
+                            userName: true
                         }
                     }
                 }
@@ -73,6 +73,26 @@ async function getChatDetailsRepo(id){
     return details;
 };
 
+async function insertMessage(userId, chatId, message){
+    return prisma.message.create({
+        data: {
+            message: message,
+            author: {
+                connect: { id: userId }
+            },
+            chat: {
+                connect: { id: chatId }
+            }
+        },
+        include: {
+            author: {
+                select: {
+                    userName: true
+                }
+            }
+        }
+    })
+}
 
 
 export { 
@@ -81,4 +101,5 @@ export {
     getUserByUsername,
     getChatsRepo,
     getChatDetailsRepo,
+    insertMessage,
  };

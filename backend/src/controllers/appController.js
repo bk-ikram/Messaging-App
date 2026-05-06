@@ -2,6 +2,7 @@ import {
     insertUser,
     getChatsRepo,
     getChatDetailsRepo,
+    insertMessage,
  } from "../../repositories/queries.js";
 import jwt from "jsonwebtoken";
 import passport from 'passport';
@@ -77,17 +78,27 @@ const getChats = async(req, res) => {
 
 
 const getChatDetails = async(req, res) => {
-    const chatId = req.params?.chatId;
+    const chatId = Number(req.params?.chatId);
     if(!chatId)
         return res.status(404).json({msg:"No Chat selected"});
     const chatDetails = await getChatDetailsRepo(chatId);
     return res.json(chatDetails);
 }   
 
+const postMessage = async(req, res) => {
+    const chatId = Number(req.params?.chatId);
+    const userId = Number(req.user.id);
+    const message = req?.body?.message;
+    if(!chatId)
+        return res.status(404).json({msg:"No Chat selected"});
+    const createdMessage = await insertMessage(userId, chatId, message);
+    return res.json(createdMessage);
+}   
 
 export default {
     signupPost,
     signinPost,
     getChats,
     getChatDetails,
+    postMessage,
 }

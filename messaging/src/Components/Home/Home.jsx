@@ -8,7 +8,7 @@ import { AuthContext } from '../App/App'
 export default function Home(){
 
     const [userChats, setUserChats] = useState([]);
-    const [selectedChat, setSelectedChat] = useState({});
+    const [selectedChat, setSelectedChat] = useState();
     const { apiFetch, user } = useContext(AuthContext);
 
     //revisit dependencies once websocket added
@@ -25,7 +25,7 @@ export default function Home(){
             <Sidebar userChats={userChats} setSelectedChat={setSelectedChat}/>
         </div>
         <div id={styles.messagingContainer}>
-            <ChatMain chat={selectedChat}/>
+            <ChatMain selectedChat={selectedChat}/>
         </div>
     </div>
     )

@@ -31,4 +31,8 @@ appRouter.get("/api/chat/:chatId"
                 ,authenticateJWT
                 ,appController.getChatDetails);
 
+appRouter.post("/api/chat/:chatId"
+                ,authenticateJWT
+                ,appController.postMessage);
+
 export default appRouter;

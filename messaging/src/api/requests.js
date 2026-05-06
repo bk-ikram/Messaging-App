@@ -23,7 +23,6 @@ async function postLogin(formJson){
 }
 
 async function postSignUp(apiFetch, formJson){
-    //return apiFetch("/api/posts");
     const res = await fetch("/api/signup",{
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -37,9 +36,22 @@ async function postSignUp(apiFetch, formJson){
     return data;
 }
 
+async function postMessage (apiFetch, formJson){
+
+    const chatId = formJson.selectedChat;
+    const res = await apiFetch(`/api/chat/${chatId}`, {
+        method: "POST",
+        body: JSON.stringify(formJson)
+    });
+
+    return res;
+
+}
 
 export {
     getChats,
+    getChatDetails,
     postLogin,
-    postSignUp
+    postSignUp,
+    postMessage
 };
