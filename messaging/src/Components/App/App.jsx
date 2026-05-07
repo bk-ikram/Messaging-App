@@ -41,12 +41,6 @@ function App() {
     localStorage.removeItem("messagingUser");
 }, []);
 
-  function handleLogOut(e){
-      e.preventDefault(); //prevent page refresh
-      clearLoggedInUser();
-      return;
-  }
-
   const apiFetch = useMemo(
     () => createApiFetch({ token, onExpired: clearLoggedInUser }),
     [token, clearLoggedInUser]

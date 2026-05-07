@@ -6,7 +6,7 @@ import { ExtractJwt
     , Strategy as JwtStrategy } from 'passport-jwt';
 
 
-var opts = {}
+let opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.JWT_SECRET;
 

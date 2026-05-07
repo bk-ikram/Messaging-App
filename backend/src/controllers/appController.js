@@ -15,7 +15,6 @@ const signupPost = async( req, res, next) => {
         const { username, email, password } = req.body;
         //generate hashed password
         const hashedPassword = await genPassword(password);
-        console.log(hashedPassword);
         //need to insert user into the db
         const user = await insertUser(username, email ,hashedPassword);
         
