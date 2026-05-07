@@ -2,6 +2,10 @@
     flex: 1 1 auto;
     grid-area: messagesDisplay;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 30px;
 }
 
 
@@ -34,4 +38,20 @@
 .messageComposition button{
     background: none;
     border: none;
+}
+
+.messageBox{
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+.outgoing{
+    background-color: #2b7efe;
+    color: white;
+    margin-left: auto;
+}
+.incoming{
+    background-color: #e6e7eb;
+    color: black;
+    margin-right: auto;
 }

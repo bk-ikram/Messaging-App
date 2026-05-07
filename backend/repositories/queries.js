@@ -63,7 +63,8 @@ async function getChatDetailsRepo(id){
                     read: true,
                     author: {
                         select: {
-                            userName: true
+                            userName: true,
+                            id: true
                         }
                     }
                 }
@@ -87,7 +88,8 @@ async function insertMessage(userId, chatId, message){
         include: {
             author: {
                 select: {
-                    userName: true
+                    userName: true,
+                    id: true,
                 }
             }
         }

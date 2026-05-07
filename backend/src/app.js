@@ -1,6 +1,8 @@
 import express from "express";
 import appRouter from "./routes/appRouter.js";
 import cors from "cors";
+import { initIO } from "../socket.js";
+import { createServer } from "node:http";
 
 import dotenv from 'dotenv';
 import path from 'path';
@@ -23,6 +25,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+/** -------------   SOCKET SETUP   -------------  **/
+
+const server = createServer(app);
+const io = initIO(server);
 
 /** ----------   PASSPORT AUTHENTICATION   ----------- **/
 
@@ -52,7 +59,7 @@ app.use(function(err, req, res, next) {
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT,(error)=>{
+server.listen(PORT,(error)=>{
     if(error)
         throw error;
     console.log(`App is listening at port ${PORT}`);

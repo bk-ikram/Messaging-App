@@ -7,6 +7,7 @@ import {
 import jwt from "jsonwebtoken";
 import passport from 'passport';
 import { genPassword } from '../../lib/passwordUtils.js'
+import { getIO } from "../../socket.js";
 
 const signupPost = async( req, res, next) => {
     try{
@@ -92,7 +93,10 @@ const postMessage = async(req, res) => {
     if(!chatId)
         return res.status(404).json({msg:"No Chat selected"});
     const createdMessage = await insertMessage(userId, chatId, message);
-    return res.json(createdMessage);
+    res.json(createdMessage);
+    //emit through socket
+    getIO().to(chatId).emit('new_message', createdMessage);
+    return;
 }   
 
 export default {
