@@ -5,8 +5,6 @@ import  appController from "../controllers/appController.js";
 import passport from 'passport';
 import { authenticateLocal
         ,authenticateJWT
-        ,isUserAuthor,
-        optionalAuth
  } from '../../middleware/authMiddleware.js'
 
 //universal

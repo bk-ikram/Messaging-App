@@ -49,7 +49,7 @@ function App() {
   //const apiFetch = createApiFetch({ token, onExpired: clearLoggedInUser });
   return (
     <>
-    <AuthContext.Provider value={{apiFetch, user, setUser, setToken, clearLoggedInUser}}>
+    <AuthContext.Provider value={{apiFetch, user, token, setUser, setToken, clearLoggedInUser}}>
       { 
         isLoggedIn 
         && <Home /> 

@@ -12,7 +12,7 @@ dayjs.extend(relativeTime);
 
 export default function ChatMain({selectedChat}){
     const [ chatDetails, setChatDetails ] = useState({messages:[]});
-    const { apiFetch, user } = useContext(AuthContext);
+    const { apiFetch, user, token } = useContext(AuthContext);
     const [ formInput, setFormInput ] = useState('');
     const bottomRef = useRef(null);
     const socketRef = useRef(null);
@@ -20,7 +20,11 @@ export default function ChatMain({selectedChat}){
 
     //connect to socket and detect incoming messages from socket server
     useEffect(() => {
-        socketRef.current = io("http://localhost:3000");
+        socketRef.current = io("http://localhost:3000", {
+            auth: {
+                token: token
+            }
+        });
 
         socketRef.current.on("new_message", (data) => {
             console.log("Message received through socket:")

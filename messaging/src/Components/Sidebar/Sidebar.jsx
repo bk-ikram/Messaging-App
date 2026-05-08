@@ -14,7 +14,7 @@ export default function Sidebar({userChats, setSelectedChat}){
             </div>
             <div className={styles.actions}>
                 {userChats.map( c => (
-                    <button className={styles.chatSelection} onClick={()=>setSelectedChat(c.id)}>
+                    <button key={c.id} className={styles.chatSelection} onClick={()=>setSelectedChat(c.id)}>
                         {c.name 
                             ? c.name 
                             : `${c.users[0]}, ${c.users[1]}, and ${c.users.length - 2} others`}

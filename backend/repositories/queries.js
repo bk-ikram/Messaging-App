@@ -2,7 +2,7 @@ import { prisma } from "../lib/prisma.js" ;
 
 const GLOBAL_CHAT_ID = 1;
 
-function insertUser(username, email,hashedPassword){
+async function insertUser(username, email,hashedPassword){
     return await prisma.user.create({
         data: {
             userName: username,
@@ -10,6 +10,19 @@ function insertUser(username, email,hashedPassword){
             hash: hashedPassword,
             chats: {
                 connect: { id: GLOBAL_CHAT_ID }
+            }
+        }
+    });
+}
+
+async function isChatMember(userId, chatId){
+    return await prisma.chat.findFirst({
+        where: {
+            id: chatId,
+            users: {
+                some: {
+                    id: userId
+                }
             }
         }
     });
@@ -104,4 +117,5 @@ export {
     getChatsRepo,
     getChatDetailsRepo,
     insertMessage,
+    isChatMember,
  };
